@@ -17,35 +17,38 @@ class App extends React.Component {
     super()
 
     this.state = {
-      crentUser :null
+      currentUser :null,
+      isLoading:true
     }
   }
 
   unsubscribeFromAuth = null;
 
-  componentDidMount(){
-    this.unsubscribeFromAuth =  auth.onAuthStateChanged( async (userAuth) => {
-      if(userAuth) {
+   componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
         const userRef = await createUserProfile(userAuth);
-        
-        userRef.onSnapshot( snapShot => {
 
-          this.setState (
-            {
-              currentUser: {
-                id:snapShot.id,
-                ...snapShot.data()
-              }
-        });
-        console.log(this.state);
-
-        } );
+        userRef.onSnapshot(snapShot => {
+         this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            },
+            isLoading:false
+          });
+          console.log(this.state.currentUser)
+        })
+         
       }
-      this.setState({ currentUser:userAuth })
+
+      this.setState({ currentUser: userAuth });
+   
     });
   }
+  
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
@@ -53,7 +56,7 @@ class App extends React.Component {
 
   return (
     <div>
-      <HeaderPage currentUser= {this.state.crentUser} />
+      <HeaderPage currentUser= {this.state.currentUser} />
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/shop' component={ShopPage} />

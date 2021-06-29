@@ -35,8 +35,8 @@ const firebaseConfig = {
          })
 
         } catch (error){
-         console.log('error create', error.message)
-        }
+         console.log('error create', error.message);
+         }
 
       } 
       return userRef;
@@ -44,7 +44,7 @@ const firebaseConfig = {
     };
  
 
- firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 
   export const auth = firebase.auth();
   export const firestore = firebase.firestore();
