@@ -8,3 +8,7 @@ a {
   color: gray;
 
 }
+
+* {
+  box-sizing: border-box;
+}

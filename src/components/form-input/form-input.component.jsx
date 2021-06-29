@@ -11,10 +11,10 @@ const FormInput = ({handleChange, lable, ...otherProps}) => (
         
         {
             lable? (
-            <lable className={`${otherProps.value.length?'shirnk':''
+            <span className={`${otherProps.value.length?'shirnk':''
             } form-input-lable`} >
               {lable}
-            </lable>
+            </span>
             ):
             null
         }
