@@ -3,14 +3,17 @@ import { useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './header.style.scss';
+
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { auth } from '../../firebase/firebase.uitils';
+import CartIcon from '../cart-icon/cart-icon.component';
 
 
 const Header = () => {
    
    const currentUser  = useSelector((state) => state.user.currentUser);
+   const hidden = useSelector( (state) => state.hidden.hidden);
 
-   console.log(currentUser);
 
    return( <div className='header'>
        
@@ -31,7 +34,11 @@ const Header = () => {
             :
             <Link className='option' to='/signin'>SignIn</Link>
          }
+         <CartIcon  />
         </div> 
+        <div>
+           {hidden ? null :<CartDropdown  />}
+        </div>
     </div>
  )
 }
