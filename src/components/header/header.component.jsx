@@ -12,7 +12,7 @@ import CartIcon from '../cart-icon/cart-icon.component';
 const Header = () => {
    
    const currentUser  = useSelector((state) => state.user.currentUser);
-   const hidden = useSelector( (state) => state.hidden.hidden);
+   const hidden = useSelector( (state) => state.cart.hidden);
 
 
    return( <div className='header'>
