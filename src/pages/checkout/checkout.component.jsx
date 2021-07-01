@@ -13,7 +13,7 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 
 const Checkout = () => {
 
-   
+
 
      const cartItems = useSelector( state =>selectCartItems(state));
      const subTotal = useSelector( state => selectCartTotal(state));
@@ -40,13 +40,13 @@ const Checkout = () => {
         {
             cartItems.map( 
                 cartItem =>
-                 (<CheckoutItem key={cartItem.id} cartItem={cartItem} />)     
+                 (<CheckoutItem key={cartItem.id} cartItem = {cartItem} />)     
                 
             )
         }
 
         <div className="total">
-            <span>Total: ${subTotal}</span>
+            <span>Total: ₹{subTotal}</span>
         </div>
 
     </div>
